@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css">
+        <title>Homemade food survey</title>
+    </head>
+<body>
+    <div class="container">
+    <header class="header">
+        <p id="description" class="description-text">Thank you for taking the time to fill in this survey</p>
+    </header>
+        <div class="form-container">
+        <form id="survey-form" class="survey-form" autocomplete="off" method="post" action="https://formspree.io/f/xyzykpgv"  onsubmit="return handleSubmit(event)">
+            <div class="form-group">
+                <!-- personal information -->
+            <fieldset>
+                <div class="personal-info">
+                <label id="name-label" for="name">Name</label>
+                    <input id="name" type="text" name="name" class="form-align" placeholder="Enter name here" required />
+                </div> 
+                <div class="personal-info">
+                    <label id="email-label" for="email">Email</label>
+                        <input id="email" type="email" name="email" class="form-align" placeholder="Enter email here" required />
+              </div>
+              <div class="personal-info">
+                    <label id="age-label" for="age">Age</label>
+                        <input id="age" type="number" name="age" class="form-align" placeholder="Enter age here" min="0" max="150" />
+                 </div>
+            </fieldset>
+            <!-- food ordering habits-->
+            <fieldset>
+                <legend>How often do you order food online?</legend>
+                <input type="hidden" name="question1" value="How-often-do-you-order-food-online?" />
+                <select id="order-frequency" name="online-order-frequency" class="form-align" title="select an option">
+                    <option value="" disabled selected >Select</option>
+                    <option value="Daily">Daily</option>
+                    <option value="2-3-times-a-week">2-3 times a week</option>
+                    <option value="once-a-week">Once a week</option>
+                    <option value="once-a-month">Once a month</option>
+                    <option value="rarely-never">Rarely/Never</option>
+                  </select>
+            </fieldset>
+            <!-- Homemade food experience-->
+             <fieldset>
+                <legend>Have you ever ordered homemade food online before?</legend>
+                <input type="hidden" name="question2" value="Have-you-ever-ordered-homemade-food-online-before?" />
+                <div class="radio-group">
+                <label for="yes">
+                    <input id="yes" type="radio" name="ever-order-homemade-food" value="yes" class="input-radio" />
+                  Yes
+                </label>
+                </div>
+                <div class="radio-group">
+                <label for="no">
+                    <input id="no" type="radio" name="ever-order-homemade-food" value="no" class="input-radio" />
+                  No
+                </label>
+                </div>
+             </fieldset>
+             <!-- Preferences for homemade food-->
+              <fieldset>
+                <legend>What types of homemade meals do you most fancy? <small>(select all that apply)</small></legend>
+                <input type="hidden" name="question3" value="What-types-of-homemade-meals-do-you-most-fancy?" />
+                <div class="checkbox-group">
+                    <label for="local-traditional-dishes">
+                        <input id="local-traditional-dishes" type="checkbox" name="homemade-food-preferences" value="local-traditional-dishes" class="input-checkbox" />
+                        Local traditional dishes
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label for="international-dishes">
+                        <input id="international-dishes" type="checkbox" name="homeamde-food-preferences" value="international-dishes" class="input-checkbox" />
+                        International dishes
+                    </label>
+                </div>
+              <div class="checkbox-group">
+                    <label for="healthy">
+                        <input id="healthy" type="checkbox" name="homeamde-food-preferences" value="healthy/organic-meals" class="input-checkbox" />
+                        Healthy/organic meals
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label for="vegan/vegetarian">
+                        <input id="vegan/vegetarian" type="checkbox" name="homeamde-food-preferences" value="vegan/vegetarian-meals" class="input-checkbox" />
+                        Vegan/vegetarian meals
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label for="dessert">
+                        <input id="dessert" type="checkbox" name="homeamde-food-preferences" value="dessert" class="input-checkbox" />
+                        Dessert(baked goods)
+                    </label>
+                </div>
+                <div class="checkbox-group other-checkbox">
+                    <label for="other">
+                        <input id="other" type="checkbox" value="other" class="input-checkbox" />
+                        Other
+                    </label>
+                </div>
+                <!-- Hidden textarea for "Other" option -->
+    <textarea id="other-preference" placeholder="State your other preferences..." class="textarea-other" name="homeamde-food-preferences" style="display: none;" rows="3" cols="30" ></textarea>
+    <input type="hidden" name="homemade-food-preferences-other" id="combined-preference" />
+              </fieldset>
+              <!-- delivery expectations-->
+              <fieldset>
+                <legend>How important is fast delivery to you?</legend>
+                <input type="hidden" name="question4" value="How-important-is-fast-delivery-to-you?">
+                <div class="radio-group radio">
+                    <label for="extremely-important">
+                        <input id="extremely-important" type="radio" name="fast-delivery-importance" value="extremely-important" class="input-radio" />
+                      Extremely important
+                    </label>
+                </div>
+                <div class="radio-group radio">
+                    <label for="important">
+                        <input id="important" type="radio" name="fast-delivery-importance" value="important" class="input-radio" />
+                      Important
+                    </label>
+                    <div class="radio-group radio">
+                        <label for="somewhat-important">
+                            <input id="somewhat-important" type="radio" name="fast-delivery-importance" value="Somewhat" class="input-radio" />
+                          Somewhat important
+                        </label>
+                    </div>
+                    <div class="radio-group radio" >
+                        <label for="not-important">
+                            <input id="not-important" type="radio" name="fast-delivery-importance" value="not-important" class="input-radio" />
+                          Not important
+                        </label>
+                    </div>
+              </fieldset>
+              <!-- delivery experience-->
+              <fieldset>
+                <legend>What is your ideal delivery time for homemade food?</legend>
+                <input type="hidden" name="question5" value="What-is-your-ideal-delivery-time-for-homemade-food?">
+                <select id="delivery-experience" name="ideal-delivery-time" class="form-align" title="select an option">
+                    <option value="" disabled selected>Select</option>
+                    <option value="under-30-minuites">under 30 minuites</option>
+                    <option value="30-60-minuites">30 to 60 minuites</option>
+                    <option value="1-2-hours">1 to 2 hours</option>
+                    <option value="same-day">same day</option>
+                    <option value="next-day">next day</option>
+                  </select>
+              </fieldset>
+              <!-- meal variety-->
+              <fieldset>
+                <legend>How important is it to have a wide variety of homemade meals available at any time?</legend>
+                <input type="hidden" name="question6" value="How-important-is-it-to-have-a-wide-variety-of-homemade-meals-available-at-any-time?">
+                <div class="radio-group radio">
+                    <label for="very-important">
+                        <input id="very-important" type="radio" name="meal-variey-importance" value="very-important" class="input-radio" />
+                      Very important
+                    </label>
+                </div>
+                <div class="radio-group radio">
+                    <label for="somewhat-important6">
+                        <input id="somewhat-important6" type="radio" name="meal-variety-importance" value="somewhat-important" class="input-radio" />
+                      Somewhat important
+                    </label>
+                </div>
+                    <div class="radio-group radio">
+                        <label for="not-important6">
+                            <input id="not-important6" type="radio" name="meal-variety-importance" value="Not-somewhat" class="input-radio" />
+                          Not important
+                        </label>
+                    </div>
+              </fieldset>
+          <input id="Submit-form" type="submit" value="submit" class="submit">
+        </form>
+      </div>
+      <script src="script.js"></script>
+    </body>
+</html>
+
