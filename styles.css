@@ -34,7 +34,7 @@ form{
     padding: 1rem;
     border: none;
     border-radius: 1.5rem;
-    background: rgba(0, 0, 255, 0.407);
+    background-color: #0000ff2a;
     color: rgb(0, 0, 0);
     font-size: 20px;
 }
@@ -53,6 +53,58 @@ textarea{
    font-weight: 600;
    font-family: unset;
 }
+
+input:not(.submit-.input-radio, .submit), textarea, select{
+     background-color: #ffffff1a;
+}
+
+/* 1. Turn off the default ugly browser circles/boxes */
+input[type="radio"],
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px !important;       /* Locks the custom width */
+    height: 20px !important;      /* Locks the custom height */
+    border: 2px solid #ccc;       /* Default border color when unchecked */
+    background-color: white;      /* Default background when unchecked */
+    display: inline-grid;
+    place-content: center;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* 2. Keep the radio buttons perfectly circular */
+input[type="radio"] {
+    border-radius: 50% !important;
+}
+
+/* 3. Keep the checkboxes slightly square */
+input[type="checkbox"] {
+    border-radius: 4px !important;
+}
+
+/* 4. THE GREEN MAGIC: What happens when clicked/checked */
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+    background-color: green !important; /* Turns the background green */
+    border-color: #0000ff2a !important;     /* Turns the border green */
+}
+
+/* 5. Optional: Adds a small inner white dot/checkmark so users know it's selected */
+input[type="radio"]:checked::before,
+input[type="checkbox"]:checked::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
+/* Keeps the checkbox inner indicator square-shaped */
+input[type="checkbox"]:checked::before {
+    border-radius: 2px;
+}
+
 
 
 header{
@@ -84,7 +136,7 @@ label{
 }
 
 .radio-group{
-    display: flex;
+    display: block;
     align-items: center;
     margin: 1.5rem auto;
     border: none yellow;
